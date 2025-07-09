@@ -93,9 +93,13 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What steps are required to open an X11 window and receive events?**
+First, we check whether a display can be opened using "XOpenDisplay." If so, we create a window with the specified dimensions and colors using "XCreateSimpleWindow."
+A button is created using the "XSelectInput" and "XMapWindow" commands.
+An event is retrieved using the for loop and the "XNextEvent" command. A rectangle is then displayed using the "XDrawRectangle" function.
+
 2. **How does the `Expose` event trigger your drawing code?**
 
----
+The expose is necessary so that the rectangle can be displayed in the window.
 
 ### Task 2: GTK+ 3 Application & Extension
 
@@ -153,8 +157,9 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **How does GTK’s signal-and-callback mechanism differ from X11’s event loop?**
+   With X11 events, you wait for an event manually using commands in a loop. GTK does this automatically using callbacks.
 2. **Why use `pkg-config` when compiling GTK applications?**
-
+Without this, the linker won't find the libraries. This is because the GTK libraries aren't in the default folder.
 ---
 
 **Remember:** Stop after **90 minutes** and record where you stopped.
